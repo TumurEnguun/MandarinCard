@@ -1,0 +1,48 @@
+[
+  {
+    "slug": "t9p4mx",
+    "locale": "mn",
+    "metaTitle": "Одгэрэлийн Тэмүүжин | МандаринКарт дижитал профайл",
+    "metaDescription": "Орчин үеийн нэрийн хуудас Мандарин картыг худалдан авахыг хүсвэл доорх хаягаар холбогдоорой.",
+    "name": "Одгэрэлийн Тэмүүжин",
+    "eyebrow": "МандаринКарт-ын үүсгэн байгуулагч",
+    "tagline": "Орчин үеийн нэрийн хуудас Мандарин картыг худалдан авахыг хүсвэл доорх хаягаар холбогдоорой.",
+    "profileImage": "/profile-assets/t9p4mx/profile.png",
+    "contactCard": "/profile-assets/t9p4mx/contact-card.vcf",
+    "contactActions": {
+      "phone": {
+        "href": "tel:+97680094430",
+        "label": "Утсаар залгах"
+      },
+      "download": {
+        "href": "/profile-assets/t9p4mx/contact-card.vcf",
+        "label": "Дугаарыг хадгалах"
+      }
+    },
+    "socialTitle": "Сошиал хаяг",
+    "socialLinks": [
+      {
+        "key": "tiktok",
+        "href": "https://www.tiktok.com/@temuujinod",
+        "label": "TikTok"
+      },
+      {
+        "key": "facebook",
+        "href": "https://www.facebook.com/saylar134",
+        "label": "Facebook"
+      },
+      {
+        "key": "instagram",
+        "href": "https://www.instagram.com/temuujinstar/",
+        "label": "Instagram"
+      },
+      {
+        "key": "gmail",
+        "href": "mailto:mightyone134@gmail.com",
+        "label": "Gmail"
+      }
+    ],
+    "bioTitle": "Тэмүүжингийн тухай",
+    "bio": "Одгэрэлийн Тэмүүжин нь анхны сэтгэгдэл урт хугацааны хамтын ажиллагааг бүтээнэ гэдэгт итгэдэг. Брэндинг болон дижитал бүтээгдэхүүний дизайны олон жилийн туршлагадаа тулгуурлан тэр МандаринКарт-ыг бүтээж, тансаг нэрийн хуудасны мэдрэмжийг 24/7 ажиллах дижитал профайлтай нэгтгэсэн."
+  }
+]
