@@ -1,11 +1,13 @@
 import fs from "fs";
 import path from "path";
 import Head from "next/head";
+import { useCallback, useState } from "react";
 
-const CONTACT_NAME = "MandarinCard";
 const TEL_URI = "+97680094430";
+const DISPLAY_PHONE = "+976 8009 4430";
 const CALL_LABEL = "\u0443\u0442\u0430\u0441\u0430\u0430\u0440 \u0437\u0430\u043b\u0433\u0430\u0445";
-const SAVE_LABEL = "\u0434\u0443\u0433\u0430\u0430\u0440\u044B\u0433 \u0445\u0430\u0434\u0433\u0430\u043b\u0430\u0445";
+const SAVE_LABEL = "\u0434\u0443\u0433\u0430\u0430\u0440\u044B\u0433 \u0445\u0443\u0443\u043b\u0431\u0430\u0440\u043b\u0430\u0445";
+const TOAST_MESSAGE = `${DISPLAY_PHONE} copied`;
 
 const styles = {
   page: {
@@ -84,6 +86,41 @@ const styles = {
     lineHeight: 1.2,
     fontFamily: "inherit",
   },
+  toastContainer: {
+    position: "fixed",
+    bottom: "1.5rem",
+    left: "50%",
+    transform: "translateX(-50%)",
+    zIndex: 1000,
+    pointerEvents: "none",
+  },
+  toast: {
+    background: "rgba(3, 7, 18, 0.92)",
+    color: "#f8fafc",
+    padding: "0.85rem 1.25rem",
+    borderRadius: "9999px",
+    fontSize: "0.95rem",
+    fontWeight: 600,
+    letterSpacing: "0.03em",
+    boxShadow: "0 18px 40px rgba(8, 47, 73, 0.45)",
+    border: "1px solid rgba(255, 255, 255, 0.08)",
+    display: "inline-flex",
+    alignItems: "center",
+    gap: "0.6rem",
+    opacity: 0,
+    transition: "opacity 0.25s ease",
+  },
+  toastVisible: {
+    opacity: 1,
+  },
+  toastAccent: {
+    display: "inline-block",
+    width: "0.55rem",
+    height: "0.55rem",
+    borderRadius: "9999px",
+    background: "linear-gradient(135deg, #ff851b, #ffd29d)",
+    boxShadow: "0 0 12px rgba(255, 221, 157, 0.6)",
+  },
 };
 
 export async function getStaticProps() {
@@ -102,30 +139,28 @@ export async function getStaticProps() {
 }
 
 export default function AdifyClientPage({ slides = [] }) {
-  const handleCallClick = () => {
+  const [isToastVisible, setToastVisible] = useState(false);
+
+  const handleCallClick = useCallback(() => {
     if (typeof window === "undefined") {
       return;
     }
     window.location.href = `tel:${TEL_URI}`;
-  };
+  }, []);
 
-  const handleSaveContactClick = () => {
-    if (typeof window === "undefined") {
+  const handleSaveContactClick = useCallback(async () => {
+    if (typeof navigator === "undefined" || typeof window === "undefined") {
       return;
     }
 
-    const vcard = [
-      "BEGIN:VCARD",
-      "VERSION:3.0",
-      `N:;${CONTACT_NAME};;;`,
-      `FN:${CONTACT_NAME}`,
-      `TEL;TYPE=CELL:${TEL_URI}`,
-      "END:VCARD",
-    ].join("\n");
-
-    const vcardUri = `data:text/vcard;charset=utf-8,${encodeURIComponent(vcard)}`;
-    window.location.href = vcardUri;
-  };
+    try {
+      await navigator.clipboard.writeText(TEL_URI);
+      setToastVisible(true);
+      window.setTimeout(() => setToastVisible(false), 2200);
+    } catch {
+      window.location.href = `tel:${TEL_URI}`;
+    }
+  }, []);
 
   return (
     <>
@@ -184,6 +219,17 @@ export default function AdifyClientPage({ slides = [] }) {
           </div>
         </footer>
       </main>
+      <div style={styles.toastContainer}>
+        <div
+          style={{
+            ...styles.toast,
+            ...(isToastVisible ? styles.toastVisible : undefined),
+          }}
+        >
+          <span style={styles.toastAccent} />
+          {TOAST_MESSAGE}
+        </div>
+      </div>
     </>
   );
 }
