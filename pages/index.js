@@ -1,120 +1,112 @@
 import Head from "next/head";
 import Link from "next/link";
+import { useEffect } from "react";
 import { getSampleProfileSlug } from "../lib/profiles";
 
 export default function Home({ sampleProfileSlug }) {
   const year = new Date().getFullYear();
   const sampleProfilePath = sampleProfileSlug ? `/profiles/${sampleProfileSlug}` : "#";
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    }
+  }, []);
+
   return (
     <>
       <Head>
-        <title>MandarinCard | Modern NFC Business Cards</title>
+        <title>MandarinCard | Орчин үеийн NFC нэрийн хуудас</title>
         <meta
           name="description"
-          content="MandarinCard delivers memorable contact experiences with NFC-enabled business cards."
+          content="MandarinCard нь NFC технологитой нэрийн хуудсаар танилцуулалтыг нэг даралтаар хүргэдэг."
         />
       </Head>
 
       <header className="hero">
         <nav className="nav">
-          <span className="logo">MandarinCard</span>
+          <div className="logo">
+            <img src="/brand/logo.png" alt="MandarinCard лого" />
+            <span>MandarinCard</span>
+          </div>
           <div className="nav-links">
-            <a href="#about">About</a>
-            <a href="#features">Features</a>
-            <a href="#cta">Get Yours</a>
+            <a href="#about">Бидний тухай</a>
+            <a href="#features">Шийдлүүд</a>
+            <a href="#cta">Захиалга</a>
           </div>
         </nav>
 
-        <div className="hero-content">
-          <span className="hero-eyebrow">Digital business cards</span>
-          <h1>Make Every Introduction Count</h1>
-          <p>
-            MandarinCard delivers memorable contact experiences with NFC-enabled cards that share your brand instantly.
-          </p>
-          <div className="hero-actions">
-            <a className="button primary" href="#cta">
-              Order a MandarinCard
-            </a>
-            {sampleProfileSlug ? (
-              <Link className="button secondary" href={sampleProfilePath}>
-                View a Live Profile
-              </Link>
-            ) : null}
+        <div className="hero-visual hero-visual--solo">
+          <div className="floating-card">
+            <span className="floating-card__wordmark" data-wordmark="MandarinCard">
+              MandarinCard
+            </span>
+            <div className="floating-card__crest" aria-hidden="true" />
           </div>
-        </div>
-
-        <div className="hero-card">
-          <p className="card-title">Tap. Share. Connect.</p>
-          <p className="card-body">
-            One tap is all it takes to share your full digital profile, social links, and contact info.
-          </p>
+          <div className="card-shadow" />
         </div>
       </header>
 
       <main>
         <section id="about" className="section">
-          <div className="section-heading">
-            <span className="eyebrow">Why MandarinCard?</span>
-            <h2>Elevate networking with a smarter business card</h2>
-          </div>
-          <div className="grid three">
-            <article className="feature">
-              <h3>NFC-powered</h3>
-              <p>Instantly transfer your profile to any modern smartphone via a simple tap or QR scan.</p>
-            </article>
-            <article className="feature">
-              <h3>On-brand design</h3>
-              <p>Tailor your MandarinCard to match your brand colors, photos, and messaging.</p>
-            </article>
-            <article className="feature">
-              <h3>Always up to date</h3>
-              <p>Edit your digital profile anytime so new connections always get the latest details.</p>
-            </article>
+          <div className="hero-content hero-copy">
+            <span className="hero-eyebrow">Дижитал нэрийн хуудас</span>
+            <h1>Танилцуулалт бүрийг үнэ цэнтэй болгоё</h1>
+            <p>MandarinCard нь NFC технологитой нэрийн хуудасаар танай брэндийг нэг хүрэлтээр санамжтай хүргэнэ.</p>
+            <div className="hero-actions">
+              <a className="button primary" href="#cta">
+                MandarinCard захиалах
+              </a>
+              {sampleProfileSlug ? (
+                <Link className="button secondary" href={sampleProfilePath}>
+                  Амьд профайлыг үзэх
+                </Link>
+              ) : null}
+            </div>
           </div>
         </section>
 
         <section id="features" className="section alt">
           <div className="section-heading">
-            <span className="eyebrow">How it works</span>
-            <h2>From first tap to lasting relationships</h2>
+            <span className="eyebrow">Хэрхэн ажилладаг вэ</span>
+            <h2>Эхний хүрэлтээс урт хугацааны харилцаа руу</h2>
           </div>
           <div className="grid two">
             <article className="card">
-              <h3>1. Tap to share</h3>
-              <p>NFC and QR options ensure your profile opens instantly on any device.</p>
+              <h3>1. Нэг хүрэлтээр хуваалц</h3>
+              <p>NFC болон QR сонголт таны профайлыг ямар ч төхөөрөмж дээр тэр даруй нээнэ.</p>
             </article>
             <article className="card">
-              <h3>2. Showcase your brand</h3>
-              <p>Highlight services, testimonials, and social proof to win trust right away.</p>
+              <h3>2. Брэндээ тодруул</h3>
+              <p>Үйлчилгээ, үйлчлүүлэгчийн сэтгэгдэл, нотолгоог ил гаргаж шууд итгэл төрүүл.</p>
             </article>
             <article className="card">
-              <h3>3. Capture leads</h3>
-              <p>Include contact capture forms or direct call buttons to close the loop.</p>
+              <h3>3. Харилцагч бүрийг бүртгэ</h3>
+              <p>Холбоо барих форм, шууд залгах товчоор харилцааг тасралтгүй үргэлжлүүл.</p>
             </article>
             <article className="card">
-              <h3>4. Track engagement</h3>
-              <p>Analytics-ready links let you understand which info resonates most.</p>
+              <h3>4. Оролцоог хэмж</h3>
+              <p>Аналитикт бэлэн холбоосууд аль мэдээлэл хамгийн их сэтгэгдэл төрүүлж байгааг харуулна.</p>
             </article>
           </div>
         </section>
 
         <section className="section testimonials">
           <div className="section-heading">
-            <span className="eyebrow">Trusted by professionals</span>
-            <h2>What our customers say</h2>
+            <span className="eyebrow">Мэргэжилтнүүдийн итгэл</span>
+            <h2>Хэрэглэгчдийн сэтгэгдэл</h2>
           </div>
           <div className="grid three">
             <blockquote>
-              <p>"Every meeting ends with a wow moment. MandarinCard makes it effortless to stay in touch."</p>
+              <p>"Уулзалт бүр гайхалтай өндөрлөдөг. MandarinCard-тай бол харилцааг хадгалах үнэхээр амар."</p>
               <cite>- Bold Vision Media</cite>
             </blockquote>
             <blockquote>
-              <p>"I love how I can update my offerings anytime. It keeps my pitch fresh and relevant."</p>
-              <cite>- Sofia Tran, Consultant</cite>
+              <p>"Үйлчилгээний мэдээллээ хүссэн үедээ шинэчилж болдог нь надад их таалагддаг. Үргэлж шинэ саналаар очих боломжтой."</p>
+              <cite>- Софиа Тран, зөвлөх</cite>
             </blockquote>
             <blockquote>
-              <p>"The analytics helped us refine our sales story. A must-have tool for modern teams."</p>
+              <p>"Аналитик нь бидний борлуулалтын өгүүлэмжийг илүү оновчтой болгов. Орчин үеийн баг бүрийн зайлшгүй хэрэгсэл."</p>
               <cite>- Northbound Creative</cite>
             </blockquote>
           </div>
@@ -122,17 +114,17 @@ export default function Home({ sampleProfileSlug }) {
 
         <section id="cta" className="section cta">
           <div className="cta-content">
-            <h2>Ready to make your next introduction unforgettable?</h2>
-            <p>Contact us to design your custom MandarinCard set and launch your digital-first brand experience.</p>
+            <h2>Дараагийн танилцуулалтаа мартагдашгүй болгох уу?</h2>
+            <p>Өөрийн брэндэд тохирсон MandarinCard-аа бүтээж, дижитал танилцуулгаа эхлүүлэхийн тулд бидэнтэй холбогдоорой.</p>
             <a className="button primary" href="mailto:hello@mandarincard.com">
-              Start Your Order
+              Захиалга өгөх
             </a>
           </div>
           <div className="cta-aside">
-            <p className="cta-note">Prefer a hands-on demo?</p>
+            <p className="cta-note">Гараараа туршиж үзэхийг хүсэж байна уу?</p>
             {sampleProfileSlug ? (
               <Link className="button secondary" href={sampleProfilePath}>
-                Explore a sample profile
+                Жишээ профайлыг үзэх
               </Link>
             ) : null}
           </div>
@@ -140,7 +132,7 @@ export default function Home({ sampleProfileSlug }) {
       </main>
 
       <footer className="footer">
-        <p>&copy; {year} MandarinCard. All rights reserved.</p>
+        <p>&copy; {year} MandarinCard. Бүх эрх хуулиар хамгаалагдсан.</p>
       </footer>
     </>
   );
