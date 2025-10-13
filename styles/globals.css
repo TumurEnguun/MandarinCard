@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&display=swap");
+﻿@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&display=swap");
 
 :root {
     --color-bg: #ffffff;
@@ -76,11 +76,14 @@ a:hover {
     display: inline-flex;
     align-items: center;
     gap: 12px;
+    flex: 1;
+    min-width: 0;
     font-weight: 700;
     font-size: 1.4rem;
     letter-spacing: 0.04em;
     color: var(--color-primary);
 }
+
 
 .logo img {
     width: 40px;
@@ -96,6 +99,75 @@ a:hover {
     display: flex;
     align-items: center;
     gap: 24px;
+    margin-left: auto;
+}
+
+.nav-hamburger {
+    position: relative;
+    display: none;
+    margin-left: 14px;
+    align-items: center;
+}
+
+.nav-hamburger__toggle {
+    list-style: none;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 6px 4px;
+    border-radius: 10px;
+    border: none;
+    background: transparent;
+    outline: none;
+}
+
+.nav-hamburger__toggle::-webkit-details-marker {
+    display: none;
+}
+
+.nav-hamburger__toggle:focus-visible {
+    outline: 2px solid rgba(247, 201, 72, 0.6);
+    outline-offset: 3px;
+}
+
+.nav-hamburger__toggle span {
+    width: 26px;
+    height: 3px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.92);
+}
+
+.nav-hamburger__menu {
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 180px;
+    padding: 18px 20px;
+    border-radius: 18px;
+    background: linear-gradient(150deg, rgba(17, 17, 17, 0.96), rgba(4, 4, 4, 0.9));
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: 10;
+}
+
+.nav-hamburger__menu a {
+    color: rgba(255, 255, 255, 0.88);
+    font-weight: 500;
+    letter-spacing: 0.08em;
+}
+
+.nav-hamburger[open] .nav-hamburger__menu {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
 }
 
 .nav-links a {
@@ -139,14 +211,16 @@ a:hover {
 .hero h1 {
     font-size: clamp(3rem, 6vw, 4rem);
     margin-bottom: 24px;
-    line-height: 1.1;
+    line-height: 1.15;
+    color: rgba(21, 21, 21, 0.92);
 }
 
 .hero p {
-    font-size: 1.12rem;
-    color: rgba(17, 17, 17, 0.72);
+    font-size: 1.1rem;
+    color: rgba(30, 30, 30, 0.75);
     margin-bottom: 36px;
     max-width: 560px;
+    line-height: 1.7;
 }
 
 .hero-actions {
@@ -241,39 +315,43 @@ a:hover {
     gap: clamp(20px, 5vw, 34px);
 }
 
-.floating-card::before,
-.floating-card::after {
+.floating-card::before {
     content: "";
     position: absolute;
     inset: 0;
     pointer-events: none;
-}
-
-.floating-card::before {
+    border-radius: inherit;
     background: linear-gradient(110deg, rgba(255, 255, 255, 0.18), transparent 58%);
     mix-blend-mode: screen;
     opacity: 0.32;
+    z-index: 1;
 }
 
 .floating-card::after {
-    background: radial-gradient(circle at 20% 25%, rgba(255, 255, 255, 0.2), transparent 55%);
-    mix-blend-mode: soft-light;
-    opacity: 0.26;
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.75) 100%);
+    transform: translate3d(0, 16px, -1px) scale(0.95);
+    opacity: 0.4;
+    filter: blur(8px);
+    z-index: -1;
 }
 
 .floating-card__wordmark {
     position: relative;
     z-index: 2;
     font-weight: 700;
-    letter-spacing: 0.24em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.6);
-    font-size: clamp(0.75rem, 2.4vw, 1rem);
+    color: rgba(255, 255, 255, 0.68);
+    font-size: clamp(0.8rem, 2.6vw, 1.08rem);
     margin-left: clamp(2px, 0.5vw, 6px);
     text-shadow:
-        -1px -1px 1px rgba(255, 255, 255, 0.4),
-        1px 1px 2px rgba(0, 0, 0, 0.65),
-        0 0 6px rgba(0, 0, 0, 0.45);
+        -2px -2px 3px rgba(255, 255, 255, 0.4),
+        1px 2px 4px rgba(0, 0, 0, 0.65);
 }
 
 .floating-card__wordmark::before,
@@ -286,15 +364,14 @@ a:hover {
 
 .floating-card__wordmark::before {
     color: transparent;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.85) 0%, rgba(168, 168, 168, 0.2) 65%, rgba(30, 30, 30, 0.55) 100%);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(150, 150, 150, 0.18) 65%, rgba(25, 25, 25, 0.55) 100%);
     background-clip: text;
     -webkit-background-clip: text;
-    opacity: 0.9;
 }
 
 .floating-card__wordmark::after {
     color: transparent;
-    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.55);
+    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.5);
     text-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
     opacity: 0.55;
 }
@@ -302,7 +379,7 @@ a:hover {
 .floating-card__crest {
     position: relative;
     margin: auto;
-    width: clamp(110px, 32%, 200px);
+    width: clamp(95px, 28%, 180px);
     aspect-ratio: 1;
     pointer-events: none;
     mask-image: url("/brand/logo.png");
@@ -317,6 +394,7 @@ a:hover {
     filter:
         drop-shadow(-6px -6px 12px rgba(255, 255, 255, 0.18))
         drop-shadow(6px 6px 16px rgba(0, 0, 0, 0.6));
+    margin-top: clamp(5px, 1.2vw, 14px);
 }
 
 .floating-card__crest::before,
@@ -394,7 +472,7 @@ a:hover {
 .section-heading h2 {
     margin: 0;
     font-size: clamp(2.2rem, 4.5vw, 3rem);
-    color: #ffffff;
+    color: rgba(23, 23, 23, 0.92);
 }
 
 .grid {
@@ -417,12 +495,10 @@ blockquote {
     overflow: hidden;
     border-radius: 24px;
     padding: 32px;
-    color: rgba(255, 255, 255, 0.88);
-    background: linear-gradient(155deg, rgba(12, 12, 12, 0.95), rgba(0, 0, 0, 0.85));
-    border: 1px solid rgba(247, 201, 72, 0.28);
-    box-shadow:
-        0 24px 50px rgba(0, 0, 0, 0.45),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    color: rgba(20, 20, 20, 0.92);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(247, 242, 224, 0.94));
+    border: 1px solid rgba(247, 201, 72, 0.22);
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.12);
 }
 
 .feature::before,
@@ -432,11 +508,8 @@ blockquote::before {
     position: absolute;
     inset: 1px;
     border-radius: inherit;
-    background:
-        radial-gradient(circle at 20% 20%, rgba(247, 201, 72, 0.18), transparent 55%),
-        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.08), transparent 60%);
-    mix-blend-mode: screen;
-    opacity: 0.7;
+    background: radial-gradient(circle at 18% 18%, rgba(247, 201, 72, 0.18), transparent 55%);
+    opacity: 0.4;
     pointer-events: none;
 }
 
@@ -447,8 +520,7 @@ blockquote::after {
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    border: 1px solid rgba(255, 255, 255, 0.04);
-    box-shadow: inset 0 0 12px rgba(247, 201, 72, 0.08);
+    border: 1px solid rgba(247, 201, 72, 0.18);
     pointer-events: none;
 }
 
@@ -456,16 +528,13 @@ blockquote::after {
 .card h3 {
     margin-top: 0;
     margin-bottom: 16px;
-    color: #ffffff;
-    text-shadow:
-        0 6px 22px rgba(0, 0, 0, 0.6),
-        0 0 8px rgba(247, 201, 72, 0.35);
+    color: rgba(23, 23, 23, 0.92);
 }
 
 blockquote {
     margin: 0;
     font-style: italic;
-    color: rgba(255, 255, 255, 0.82);
+    color: rgba(20, 20, 20, 0.75);
     display: flex;
     flex-direction: column;
     gap: 18px;
@@ -474,9 +543,7 @@ blockquote {
 blockquote cite {
     font-style: normal;
     font-weight: 600;
-    color: var(--color-primary);
-    text-transform: uppercase;
-    letter-spacing: 0.16em;
+    color: rgba(247, 201, 72, 0.8);
 }
 
 .cta {
@@ -628,13 +695,20 @@ blockquote cite {
     }
 
     .nav-links {
-        width: 100%;
-        justify-content: space-between;
+        display: none;
     }
 
     .hero-visual {
         width: min(440px, 84vw);
     }
+
+    .nav-hamburger {
+        position: relative;
+        display: none;
+        margin-left: 14px;
+        align-items: center;
+    }
+
 }
 
 @media (max-width: 640px) {
@@ -672,3 +746,16 @@ blockquote cite {
         transform: rotateX(8deg) rotateY(-10deg);
     }
 }
+
+@media (max-width: 480px) {
+    .floating-card__wordmark {
+        font-size: 0.95rem;
+        letter-spacing: 0.12em;
+    }
+}
+
+
+
+
+
+

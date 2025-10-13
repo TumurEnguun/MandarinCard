@@ -1,4 +1,4 @@
-import Head from "next/head";
+﻿import Head from "next/head";
 import Link from "next/link";
 import { useEffect } from "react";
 import { getSampleProfileSlug } from "../lib/profiles";
@@ -19,7 +19,7 @@ export default function Home({ sampleProfileSlug }) {
         <title>MandarinCard | Орчин үеийн NFC нэрийн хуудас</title>
         <meta
           name="description"
-          content="MandarinCard нь NFC технологитой нэрийн хуудсаар танилцуулалтыг нэг даралтаар хүргэдэг."
+          content="MandarinCard нь NFC технологитой нэрийн хуудсаар танай брэндийг нэг хүрэлтээр санамжтай хүргэнэ."
         />
       </Head>
 
@@ -29,9 +29,23 @@ export default function Home({ sampleProfileSlug }) {
             <img src="/brand/logo.png" alt="MandarinCard лого" />
             <span>MandarinCard</span>
           </div>
+
+          <details className="nav-hamburger">
+            <summary className="nav-hamburger__toggle" aria-label="Цэс">
+              <span />
+              <span />
+              <span />
+            </summary>
+            <div className="nav-hamburger__menu">
+              <a href="#about">Бидний тухай</a>
+              <a href="#features">Онцлогууд</a>
+              <a href="#cta">Захиалга</a>
+            </div>
+          </details>
+
           <div className="nav-links">
             <a href="#about">Бидний тухай</a>
-            <a href="#features">Шийдлүүд</a>
+            <a href="#features">Онцлогууд</a>
             <a href="#cta">Захиалга</a>
           </div>
         </nav>
@@ -52,7 +66,9 @@ export default function Home({ sampleProfileSlug }) {
           <div className="hero-content hero-copy">
             <span className="hero-eyebrow">Дижитал нэрийн хуудас</span>
             <h1>Танилцуулалт бүрийг үнэ цэнтэй болгоё</h1>
-            <p>MandarinCard нь NFC технологитой нэрийн хуудасаар танай брэндийг нэг хүрэлтээр санамжтай хүргэнэ.</p>
+            <p>
+              MandarinCard нь NFC нэрийн хуудсаар танилцуулалтыг нэг хүрэлтээр хүргэж, брэндийн танигдахуйг шинэ түвшинд гаргана.
+            </p>
             <div className="hero-actions">
               <a className="button primary" href="#cta">
                 MandarinCard захиалах
@@ -74,11 +90,11 @@ export default function Home({ sampleProfileSlug }) {
           <div className="grid two">
             <article className="card">
               <h3>1. Нэг хүрэлтээр хуваалц</h3>
-              <p>NFC болон QR сонголт таны профайлыг ямар ч төхөөрөмж дээр тэр даруй нээнэ.</p>
+              <p>NFC болон QR сонголтууд таны профайлыг ямар ч төхөөрөмж дээр шууд нээнэ.</p>
             </article>
             <article className="card">
               <h3>2. Брэндээ тодруул</h3>
-              <p>Үйлчилгээ, үйлчлүүлэгчийн сэтгэгдэл, нотолгоог ил гаргаж шууд итгэл төрүүл.</p>
+              <p>Үйлчилгээ, түүх, сэтгэгдлээ онцолж, шууд итгэл төрүүл.</p>
             </article>
             <article className="card">
               <h3>3. Харилцагч бүрийг бүртгэ</h3>
@@ -86,7 +102,7 @@ export default function Home({ sampleProfileSlug }) {
             </article>
             <article className="card">
               <h3>4. Оролцоог хэмж</h3>
-              <p>Аналитикт бэлэн холбоосууд аль мэдээлэл хамгийн их сэтгэгдэл төрүүлж байгааг харуулна.</p>
+              <p>Аналитик тайлангууд аль мэдээлэл хамгийн их сэтгэгдэл төрүүлж байгааг харуулна.</p>
             </article>
           </div>
         </section>
@@ -94,19 +110,19 @@ export default function Home({ sampleProfileSlug }) {
         <section className="section testimonials">
           <div className="section-heading">
             <span className="eyebrow">Мэргэжилтнүүдийн итгэл</span>
-            <h2>Хэрэглэгчдийн сэтгэгдэл</h2>
+            <h2>Хэрэглэгчийн сэтгэгдэл</h2>
           </div>
           <div className="grid three">
             <blockquote>
-              <p>"Уулзалт бүр гайхалтай өндөрлөдөг. MandarinCard-тай бол харилцааг хадгалах үнэхээр амар."</p>
+              <p>“Уулзалт бүр гайхалтай өндөрлөдөг. MandarinCard-тай бол харилцааг хадгалах үнэхээр амар.”</p>
               <cite>- Bold Vision Media</cite>
             </blockquote>
             <blockquote>
-              <p>"Үйлчилгээний мэдээллээ хүссэн үедээ шинэчилж болдог нь надад их таалагддаг. Үргэлж шинэ саналаар очих боломжтой."</p>
+              <p>“Үйлчилгээгээ хүссэн үедээ шинэчилж болдог нь надад таалагддаг. Үргэлж шинэ саналаар очих боломжтой.”</p>
               <cite>- Софиа Тран, зөвлөх</cite>
             </blockquote>
             <blockquote>
-              <p>"Аналитик нь бидний борлуулалтын өгүүлэмжийг илүү оновчтой болгов. Орчин үеийн баг бүрийн зайлшгүй хэрэгсэл."</p>
+              <p>“Аналитик нь бидний борлуулалтын өгүүлэмжийг оновчтой болгож, багийн үр ашгийг нэмэгдүүлсэн.”</p>
               <cite>- Northbound Creative</cite>
             </blockquote>
           </div>
@@ -115,13 +131,13 @@ export default function Home({ sampleProfileSlug }) {
         <section id="cta" className="section cta">
           <div className="cta-content">
             <h2>Дараагийн танилцуулалтаа мартагдашгүй болгох уу?</h2>
-            <p>Өөрийн брэндэд тохирсон MandarinCard-аа бүтээж, дижитал танилцуулгаа эхлүүлэхийн тулд бидэнтэй холбогдоорой.</p>
+            <p>Өөрийн брэндэд тохирсон MandarinCard-аа бүтээж, дижитал уулзалтаа шинэ түвшинд гаргаарай.</p>
             <a className="button primary" href="mailto:hello@mandarincard.com">
               Захиалга өгөх
             </a>
           </div>
           <div className="cta-aside">
-            <p className="cta-note">Гараараа туршиж үзэхийг хүсэж байна уу?</p>
+            <p className="cta-note">Бодитоор туршиж үзэхийг хүсэж байна уу?</p>
             {sampleProfileSlug ? (
               <Link className="button secondary" href={sampleProfilePath}>
                 Жишээ профайлыг үзэх
