@@ -67,18 +67,36 @@ export default function ProfilePage({ profile }) {
         <link rel="stylesheet" href="/profile.css" />
       </Head>
 
-      <div className="page" data-locale={locale}>
+      <div className="page" data-locale={locale} data-slug={profile.slug}>
         <header className="profile-card">
-          <figure className="profile-photo">
-            <img src={profileImage} alt={name} />
-          </figure>
-          <div className="profile-info">
-            <p className="eyebrow">{eyebrow}</p>
-            <h1>{name}</h1>
-            <p className="tagline">{tagline}</p>
-            <div className="contact-actions">
-              {downloadButton}
-              {phoneButton}
+          {eyebrow && eyebrow.includes("Кибер аюулгүй байдлын") && (
+            <div className="unit-header">
+              <img 
+                src={`/profile-assets/${profile.slug}/logo.png`} 
+                alt="Unit Logo" 
+                className="unit-logo"
+                onError={(e) => { e.target.style.display = 'none'; }}
+              />
+              <div className="unit-text-container">
+                <span className="unit-text-line">Кибер аюулгүй байдлын</span>
+                <span className="unit-text-line">цэргийн командлал</span>
+              </div>
+            </div>
+          )}
+          <div className="profile-card-content">
+            <figure className="profile-photo">
+              <img src={profileImage} alt={name} />
+            </figure>
+            <div className="profile-info">
+              {!eyebrow.includes("Кибер аюулгүй байдлын") && (
+                <p className="eyebrow">{eyebrow}</p>
+              )}
+              <h1>{name}</h1>
+              <p className="tagline">{tagline}</p>
+              <div className="contact-actions">
+                {downloadButton}
+                {phoneButton}
+              </div>
             </div>
           </div>
         </header>
