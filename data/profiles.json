@@ -61,7 +61,7 @@
     "contactCard": "/profile-assets/k7m9x2/contact-card.vcf",
     "contactActions": {
       "phone": {
-        "href": "tel:+97680094430",
+        "href": "tel:+97686235157",
         "label": "Дугаар руу залгах"
       },
       "download": {
@@ -99,22 +99,22 @@
     "socialLinks": [
       {
         "key": "facebook",
-        "href": "https://www.facebook.com/saylar134",
+        "href": "https://www.facebook.com/oneregularboy",
         "label": "Facebook"
       },
       {
         "key": "instagram",
-        "href": "https://www.instagram.com/temuujinstar/",
+        "href": "https://www.instagram.com/t.eng00/",
         "label": "Instagram"
       },
       {
         "key": "gmail",
-        "href": "mailto:mightyone134@gmail.com",
+        "href": "mailto:enguuntumur00@gmail.com",
         "label": "Gmail"
       },
       {
         "key": "tiktok",
-        "href": "https://www.tiktok.com/@temuujinod",
+        "href": "https://www.tiktok.com/@MandarinPAy",
         "label": "TikTok"
       }
     ]
